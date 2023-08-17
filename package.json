@@ -1,0 +1,11 @@
+{
+  "name": "project-euler-challenges",
+  "version": "1.0.0",
+  "description": "Challenging and fun way to demonstrate existing software develop skills and learn some new things!",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Thomas Purk",
+  "license": "ISC"
+}
