@@ -1,6 +1,91 @@
 // command line syntax : node -e 'require("./app.js").problem1()'
 
 const problems = {
+  // cmd: node -e 'console.log(require("./app.js").factors(600851475143))'
+  factors: function (n) {
+    // Collect factors as discovered
+    let returnObject = {
+      factors: [1, n],
+      primeFactors: [],
+    };
+    // Find numbers, starting at two, that divide the input number
+    // with 0 remainder
+    for (let test = 2; test < n; test++) {
+      if (n % test == 0) {
+        let result = n / test;
+        // "test" is a factor of n so add it to the collection
+        returnObject.factors.push(test);
+        // the result of the factor test is also a factor of n, add it.
+        returnObject.factors.push(result);
+
+        // Determine what are the factores of our new factors,
+        // these will aslo be factors of n
+        // But to avoid endless loop do not retest input n
+        if (n != test) {
+          let testResults = problems.factors(test);
+          // Merge the data into the return object
+          returnObject.factors = returnObject.factors.concat(
+            testResults.factors
+          );
+          returnObject.primeFactors = returnObject.primeFactors.concat(
+            testResults.primeFactors
+          );
+        }
+        if (n != result) {
+          let resultResults = problems.factors(result);
+          // Merge the data into the return object
+          returnObject.factors = returnObject.factors.concat(
+            resultResults.factors
+          );
+          returnObject.primeFactors = returnObject.primeFactors.concat(
+            resultResults.primeFactors
+          );
+        }
+
+        // No need to continue the loop, other factors will be discovered
+        // by the nested "factors" calls
+        break;
+      }
+    }
+
+    // n is prime if returnObject.factors is empty
+    if (returnObject.factors.length == 2) {
+      returnObject.primeFactors.push(n);
+    }
+    // de-duplicate
+    let ddFactors = [];
+    returnObject.factors.forEach((f) => {
+      if (!ddFactors.includes(f)) ddFactors.push(f);
+    });
+    returnObject.factors = ddFactors;
+    // de-duplicate
+    let ddPrimeFactors = [];
+    returnObject.primeFactors.forEach((f) => {
+      if (!ddPrimeFactors.includes(f)) ddPrimeFactors.push(f);
+    });
+    returnObject.primeFactors = ddPrimeFactors;
+    // Send the Object back
+    //console.log(JSON.stringify(returnObject));
+    return returnObject;
+  },
+
+  isPrime: function (n) {
+    let factors = [];
+    if (n == 2 || (n % 2 != 0 && n > 1)) {
+      // even numbers are never primes except 2 && 1 is not prime
+      for (let test = 1; test <= n; test++) {
+        if (n % test == 0) {
+          factors.push(test);
+          if (test != n && test != 1) {
+            // we already know that n cannot be prime, no need to keep looking
+            break;
+          }
+        }
+      }
+    }
+    return JSON.stringify(factors) == JSON.stringify([1, n]);
+  },
+
   problem1: function () {
     // If we list all the natural numbers below 10 that are multiples of 3 or 5,
     // we get 3, 5, 6, and 9. The sum of these multiples is 23.
@@ -36,63 +121,6 @@ const problems = {
     console.log("Problem 2: " + answer);
   },
 
-  // cmd: node -e 'console.log(require("./app.js").factors(600851475143))'
-  factors: function (n) {
-    // Collect factors as discovered
-    let returnObject = {
-      factors: [],
-      primeFactors: [],
-    };
-    // Find numbers, starting at two, that divide the input number
-    // with 0 remainder
-    for (let test = 2; test < n; test++) {
-      if (n % test == 0) {
-        let result = n / test;
-        // "test" is a factor of n so add it to the collection
-        returnObject.factors.push(test);
-        // the result of the factor test is also a factor of n, add it.
-        returnObject.factors.push(result);
-        // Determine what are the factores of our new factors, these will aslo be factors of n
-        let testResults = problems.factors(test);
-        let resultResults = problems.factors(result);
-        // Merge the data into the return object
-        returnObject.factors = returnObject.factors.concat(testResults.factors);
-        returnObject.primeFactors = returnObject.primeFactors.concat(
-          testResults.primeFactors
-        );
-        returnObject.factors = returnObject.factors.concat(
-          resultResults.factors
-        );
-        returnObject.primeFactors = returnObject.primeFactors.concat(
-          resultResults.primeFactors
-        );
-
-        // No need to continue the loop, other factors will be discovered
-        // by the nested "factors" calls
-        break;
-      }
-    }
-
-    // n is prime if returnObject.factors is empty
-    if (returnObject.factors.length == 0) {
-      returnObject.primeFactors.push(n);
-    }
-    // de-duplicate
-    let ddFactors = [];
-    returnObject.factors.forEach((f) => {
-      if (!ddFactors.includes(f)) ddFactors.push(f);
-    });
-    returnObject.factors = ddFactors;
-    // de-duplicate
-    let ddPrimeFactors = [];
-    returnObject.primeFactors.forEach((f) => {
-      if (!ddPrimeFactors.includes(f)) ddPrimeFactors.push(f);
-    });
-    returnObject.primeFactors = ddPrimeFactors;
-    // Send the Object back
-    return returnObject;
-  },
-
   //cmd: node -e 'require("./app.js").problem3(600851475143)'
   problem3: function (n) {
     // The prime factors of 13195 are 5, 7, 13, and 29.
@@ -105,6 +133,313 @@ const problems = {
     });
 
     console.log("Problem 3: " + answer);
+  },
+
+  problem4: function () {
+    //A palindromic number reads the same both ways. The largest palindrome
+    // made from the product of two -digit numbers is 9009 = 91 x 99.
+    //
+    // Find the largest palindrome made from the product of two 3-digit numbers.
+    let answer = 0;
+    // decending index loop
+    for (let factor1 = 999; factor1 > 99; factor1--) {
+      for (let factor2 = 999; factor2 > 99; factor2--) {
+        let result = factor1 * factor2;
+
+        if (
+          result.toString() == result.toString().split("").reverse().join("")
+        ) {
+          if (result > answer) {
+            answer = result;
+          }
+        }
+      }
+    }
+    console.log("Problem 4: " + answer);
+  },
+
+  problem5: function () {
+    // 2520 is the smallest number that can be divided by each of the numbers from
+    // 1 to 10 without any remainder.
+    //
+    //What is the smallest positive number that is evenly divisible by all of the
+    // numbers from 1 to 20?
+    let answer = 0;
+    let multiples = [];
+    let test = 1;
+    while (answer == 0) {
+      let sumRemainders = 0;
+      for (let n = 1; n <= 20; n++) {
+        sumRemainders += test % n; // = 0 id n is a factor of test
+      }
+      if (sumRemainders == 0) {
+        answer = test;
+      }
+      test++;
+    }
+    console.log("Problem 5: " + answer);
+  },
+
+  problem6: function () {
+    // The sum of the squares of the first ten natural numbers is,
+    // 1^2 + 2^2 + ... + 10^2 = 385.
+    // The square of the sum of the first ten natural numbers is,
+    // ( 1 + 2 + ... + 10 )^2 = 55^2 = 3025.
+    //
+    // Hence the difference between the sum of the squares of the first ten natural numbers
+    // and the square of the sum is 3025 − 385 = 2640.
+    // Find the difference between the sum of the squares of the first one hundred natural numbers
+    // and the square of the sum.
+
+    let answer = 0;
+    let sumOfSquares = 0;
+    let sumOfNaturalNumbers = 0;
+    for (let nn = 1; nn <= 100; nn++) {
+      sumOfNaturalNumbers += nn;
+      sumOfSquares += Math.pow(nn, 2);
+    }
+    answer = Math.pow(sumOfNaturalNumbers, 2) - sumOfSquares;
+
+    console.log("Problem 6: " + answer);
+  },
+
+  problem7: function () {
+    // By listing the first six prime numbers: 2,3,5,7,11, and 13,
+    // we can see that the 6th prime is 13.
+    //
+    // What is the 10001st prime number?
+    let answer = 0;
+    let primes = [];
+    let test = 2; // We now 0 and 1 are not prime numbers.
+    // 10001st item in primes is index 10000
+    while (!primes[10000]) {
+      if (this.isPrime(test)) primes.push(test);
+      test++;
+    }
+    console.log("Problem 7: " + primes[10000]);
+  },
+
+  problem8: function () {
+    // The four adjacent digits in the 1000-digit number that have the greatest product are
+    // 9 x 9 x 8 x 9 = 5832.
+    //
+    // Find the thirteen adjacent digits in the
+    // 1000-digit number that have the greatest product. What is the value of this product?
+    let answer = 0;
+    let digitsString =
+      "73167176531330624919225119674426574742355349194934" +
+      "96983520312774506326239578318016984801869478851843" +
+      "85861560789112949495459501737958331952853208805511" +
+      "12540698747158523863050715693290963295227443043557" +
+      "66896648950445244523161731856403098711121722383113" +
+      "62229893423380308135336276614282806444486645238749" +
+      "30358907296290491560440772390713810515859307960866" +
+      "70172427121883998797908792274921901699720888093776" +
+      "65727333001053367881220235421809751254540594752243" +
+      "52584907711670556013604839586446706324415722155397" +
+      "53697817977846174064955149290862569321978468622482" +
+      "83972241375657056057490261407972968652414535100474" +
+      "82166370484403199890008895243450658541227588666881" +
+      "16427171479924442928230863465674813919123162824586" +
+      "17866458359124566529476545682848912883142607690042" +
+      "24219022671055626321111109370544217506941658960408" +
+      "07198403850962455444362981230987879927244284909188" +
+      "84580156166097919133875499200524063689912560717606" +
+      "05886116467109405077541002256983155200055935729725" +
+      "71636269561882670428252483600823257530420752963450";
+
+    let digitArray = digitsString.split("");
+
+    for (let i = 0; i < digitArray.length - 13; i++) {
+      let test =
+        digitArray[i] *
+        digitArray[i + 1] *
+        digitArray[i + 2] *
+        digitArray[i + 3] *
+        digitArray[i + 4] *
+        digitArray[i + 5] *
+        digitArray[i + 6] *
+        digitArray[i + 7] *
+        digitArray[i + 8] *
+        digitArray[i + 9] *
+        digitArray[i + 10] *
+        digitArray[i + 11] *
+        digitArray[i + 12];
+
+      if (test > answer) answer = test;
+    }
+
+    console.log("Problem 8: " + answer);
+  },
+
+  problem9: function () {
+    // A Pythagorean triplet is a set of three natural numbers, a<b<c,
+    // for which,a^2 + b^2 = c^2.
+    //
+    // For example, 3^2 + 4^2 = 9 + 16 = 25 = 5^2.
+    //
+    // There exists exactly one Pythagorean triplet for which a + b + c = 1000.
+    // Find the product abc.'
+    let answer = 0;
+    for (let c = 1000; c >= 0; c--) {
+      for (let b = c; b >= 0; b--) {
+        for (let a = b; a >= 0; a--) {
+          if (c > b && b > a) {
+            if (c + b + a == 1000) {
+              if (Math.pow(a, 2) + Math.pow(b, 2) == Math.pow(c, 2)) {
+                console.log("Problem 9: c-> " + c + " b-> " + b + " a-> " + a);
+                answer = a * b * c;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    console.log("Problem 9: " + answer);
+  },
+
+  problem10: function (n) {
+    //The sum of the primes below 10 is 2+3+5+7=17.
+    //
+    // Find the sum of all the primes below two million.
+    let answer = 0;
+    // starting with an odd number
+    if (n % 2 == 0) n--;
+    // subtracting 1 leads to even number which we know are not prime
+    // subtracting 2 leads to only odds which may be prime.
+    for (let index = n; index > 1; index -= 2) {
+      if (this.isPrime(index)) {
+        answer += index;
+      }
+    }
+    // the above loop will miss 2, the only even prime
+    // so add it now
+    answer += 2;
+
+    console.log("Problem 10: " + answer);
+  },
+
+  problem11: function () {
+    // wrong: 51,267,216
+    // /In the 20×20 grid below, four numbers along a diagonal
+    // line have been marked in red.
+    //
+    // prettier-ignore
+    let arrRows = [
+      [ 8, 2,22,97,38,15, 0,40, 0,75, 4, 5, 7,78,52,12,50,77,91, 8],
+      [49,49,99,40,17,81,18,57,60,87,17,40,98,43,69,48, 4,56,62, 0],
+      [81,49,31,73,55,79,14,29,93,71,40,67,53,88,30, 3,49,13,36,65],
+      [52,70,95,23, 4,60,11,42,69,24,68,56, 1,32,56,71,37, 2,36,91],
+      [22,31,16,71,51,67,63,89,41,92,36,54,22,40,40,28,66,33,13,80],
+      [24,47,32,60,99, 3,45, 2,44,75,33,53,78,36,84,20,35,17,12,50],
+      [32,98,81,28,64,23,67,10,26,38,40,67,59,54,70,66,18,38,64,70],
+      [67,26,20,68, 2,62,12,20,95,63,94,39,63, 8,40,91,66,49,94,21],
+      [24,55,58, 5,66,73,99,26,97,17,78,78,96,83,14,88,34,89,63,72],
+      [21,36,23, 9,75, 0,76,44,20,45,35,14, 0,61,33,97,34,31,33,95],
+      [78,17,53,28,22,75,31,67,15,94, 3,80, 4,62,16,14, 9,53,56,92],
+      [16,39, 5,42,96,35,31,47,55,58,88,24, 0,17,54,24,36,29,85,57],
+      [86,56, 0,48,35,71,89, 7, 5,44,44,37,44,60,21,58,51,54,17,58],
+      [19,80,81,68, 5,94,47,69,28,73,92,13,86,52,17,77, 4,89,55,40],
+      [ 4,52, 8,83,97,35,99,16, 7,97,57,32,16,26,26,79,33,27,98,66],
+      [88,36,68,87,57,62,20,72, 3,46,33,67,46,55,12,32,63,93,53,69],
+      [ 4,42,16,73,38,25,39,11,24,94,72,18, 8,46,29,32,40,62,76,36],
+      [20,69,36,41,72,30,23,88,34,62,99,69,82,67,59,85,74, 4,36,16],
+      [20,73,35,29,78,31,90, 1,74,31,49,71,48,86,81,16,23,57, 5,54],
+      [ 1,70,54,71,83,51,54,69,16,92,33,48,61,43,52, 1,89,19,67,48],
+    ]
+    //
+    // The product of these numbers is 26 × 63 × 78 × 14 = 1788696.
+    //
+    // What is the greatest product of four adjacent numbers in the same direction
+    // (up, down, left, right, or diagonally) in the 20×20 grid?
+    let answer = 0;
+    let candidates = [];
+
+    // table off-sets
+    // [rowStart, colStart, rowEnd, colEnd]
+    let modes = {
+      vert: [0, 0, 3, 0],
+      horz: [0, 0, 0, 3],
+      diagA: [0, 0, 3, 3],
+      diagB: [0, 3, 3, 0],
+    };
+
+    for (const modeName in modes) {
+      const mode = modes[modeName];
+      // Iterate the data rows and columns
+      // Leave row to scan ahead 4 columns and/or rows
+      for (let iRow = mode[0]; iRow < arrRows.length - mode[2]; iRow++) {
+        let arrCols = arrRows[iRow];
+        for (let iCol = mode[1]; iCol < arrCols.length - mode[3]; iCol++) {
+          // Index Adders
+          let ra = [0, 0, 0, 0];
+          let ca = [0, 0, 0, 0];
+          if (modeName == "vert") {
+            ra = [0, 1, 2, 3];
+          } else if (modeName == "horz") {
+            ca = [0, 1, 2, 3];
+          } else if (modeName == "diagA") {
+            ra = [0, 1, 2, 3];
+            ca = [0, 1, 2, 3];
+          } else if (modeName == "diagB") {
+            ra = [0, 1, 2, 3];
+            ca = [0, -1, -2, -3];
+          }
+
+          let candidate = {
+            mode: modeName,
+            origin: iRow + ra[0] + " , " + (iCol + ca[0]),
+            values:
+              arrRows[iRow + ra[0]][iCol + ca[0]] +
+              " , " +
+              arrRows[iRow + ra[1]][iCol + ca[1]] +
+              " , " +
+              arrRows[iRow + ra[2]][iCol + ca[2]] +
+              " , " +
+              arrRows[iRow + ra[3]][iCol + ca[3]],
+
+            result:
+              arrRows[iRow + ra[0]][iCol + ca[0]] *
+              arrRows[iRow + ra[1]][iCol + ca[1]] *
+              arrRows[iRow + ra[2]][iCol + ca[2]] *
+              arrRows[iRow + ra[3]][iCol + ca[3]],
+          };
+          candidates.push(candidate);
+          if (answer < candidate.result) {
+            answer = candidate.result;
+          }
+        }
+      }
+    }
+
+    console.log("Problem 11: " + answer);
+  },
+
+  problem12: function () {
+    // The sequence of triangle numbers is generated by adding the natural numbers.
+    // So the 7th triangle number would be 1+2+3+4+5+6+7=28.
+    // The first ten terms would be:
+    // 1,3,6,10,15,21,28,36,45,55,…
+    // Let us list the factors of the first seven triangle numbers:
+    //       1: 1
+    //       3: 1,3
+    //       6: 1,2,3,6
+    //      10: 1,2,5,10
+    //      15: 1,3,5,15
+    //      21: 1,3,7,21
+    //      28: 1,2,4,7,14,28
+    // We can see that 28 is the first triangle number to have over five divisors.
+    // What is the value of the first triangle number to have over five hundred divisors?
+
+    let answer = 0;
+    let nn = 1;
+    do {
+      answer += nn;
+      nn++;
+    } while (this.factors(answer).factors.length <= 500);
+
+    console.log("Problem: 12: " + answer);
   },
 };
 module.exports = problems;
