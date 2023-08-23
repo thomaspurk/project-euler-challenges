@@ -1,3 +1,4 @@
+const cp = require("child_process");
 // command line syntax : node -e 'require("./app.js").problem1()'
 
 const problems = {
@@ -641,15 +642,14 @@ const problems = {
 
     let answer = 0;
     // Find all possible route through an iterative stepping algorythm
-    let paths = this.nextRouteStep(1, 1, columnSize, rowSize);
+    answer = this.nextRouteStep(1, 1, columnSize, rowSize);
     // Count up the route that made it to the end.
 
-    console.log(paths);
+    console.log("Problem 15: " + answer);
   },
 
-  // Stop through all the diffent moves on a route until
-  // max x and Y is hit. The resulting array should contain
-  // all of the valid routes plus intermediary routes.
+  // Step through all the diffent moves on a route until
+  // max x and Y is hit.
   paths: {},
   nextRouteStep: function (x, y, maxX, maxY) {
     //if (x == maxX && y == maxY) debugger;
@@ -658,7 +658,8 @@ const problems = {
     // pull paths from known nodes from cache
     if (this.paths[x + "_" + y]) {
       // The paths from this node forward have already been traced
-
+      // Only need to return the path count for this node
+      // instead of interating over the child nodes again
       pathCount = this.paths[x + "_" + y];
     } else {
       // The paths from this node have NOT been traced.
@@ -673,16 +674,129 @@ const problems = {
         newPathCount += this.nextRouteStep(x, y + 1, maxX, maxY);
       }
 
-      console.log("New Node: " + x + "_" + y);
+      // If the current node is the last node (far lower right)
+      // then set the path count to one because adjacent nodes
+      // will have only one path to get here.
       if (x == maxX && y == maxY) newPathCount = 1;
+
+      // Create the new node
       this.paths[x + "_" + y] = newPathCount;
       pathCount = newPathCount;
     }
 
     return pathCount;
   },
+
+  problem16: function (a, b) {
+    // 2^15 = 32768 and the sum of its digits is 3+2+7+6+8 = 26.
+    //
+    // What is the sum of the digits of the number 2^1000?
+    let answer = 0;
+
+    //let arrValues = Math.pow(a, b).toString().split("");
+    // the above line only works in Javascript upto the MAX SAFE INTEGER of
+    // 9,007,199,254,740,991 or nine quadrillion. Larger results will trigger
+    //the Math.pow function to return scientific notation, 1.234567e+200
+    //let arrValues = (a ** b).toString().split("");
+    // the above line using ** as the same problem.
+    // The following line is developed for NodeJS on Mac.
+
+    let arrValues = cp
+      .execSync("bc --expression=" + a + "^" + b)
+      .toString()
+      .split("");
+    arrValues.forEach((x) => {
+      if (Number.isInteger(parseInt(x))) answer += parseInt(x);
+    });
+
+    console.log("Problem 16: " + answer);
+  },
+  problem17: function (n) {
+    // If the numbers 1 to 5 are written out in words: one, two, three, four, five,
+    // then there are 3+3+5+4+4=19 letters used in total.
+    //
+    // If all the numbers from 1 to 1000 (one thousand) inclusive were written out in words,
+    // how many letters would be used? \nNOTE: Do not count spaces or hyphens. For example,
+    // 342 (three hundred and forty-two) contains 23 letters and 115 (one hundred and fifteen)
+    // contains 20 letters. The use of "and" when writing out numbers is in compliance with British usage.
+
+    let answer = 0;
+    let map = {
+      1: "one",
+      2: "two",
+      3: "there",
+      4: "four",
+      5: "five",
+      6: "six",
+      7: "seven",
+      8: "eight",
+      9: "nine",
+      10: "ten",
+      11: "eleven",
+      12: "twelve",
+      13: "thirteen",
+      14: "fourteen",
+      15: "fifteen",
+      16: "sixteen",
+      17: "seventeen",
+      18: "eighteen",
+      19: "nineteen",
+      20: "twenty",
+      30: "thirty",
+      40: "forty",
+      50: "fifty",
+      60: "sixty",
+      70: "seventy",
+      80: "eigthy",
+      90: "ninety",
+    };
+
+    let allNumbersString = "";
+
+    // Iterate 1 to n (upto 9999)
+    for (let index = 1; index <= n; index++) {
+      let numString = index.toString();
+
+      // map
+      // Check for direct mapping
+      if (map[numString]) {
+        allNumbersString += " " + map[numString];
+        console.log(map[numString]);
+      } else {
+        // parsing is required
+        let parsedString = "";
+        // Thousands upto 9999
+        // Example: 100 tho = undefined; hun = "one"; ten = undefined; one = undefined
+        // Example: 999 tho = undefined; hun = "nine"; ten = ninety; one = nine
+        let tho = map[numString.split("").reverse()[3]];
+        let hun = map[numString.split("").reverse()[2]];
+        // ten slot has special cases 10-20, 30, 40 ...
+        let tenRaw = numString.split("").reverse()[1];
+        let oneRaw = numString.split("").reverse()[0];
+        let ten = undefined;
+        let one = undefined;
+        if (map[tenRaw + oneRaw]) {
+          ten = map[tenRaw + oneRaw];
+        } else {
+          ten = map[tenRaw + "0"];
+          one = map[oneRaw];
+        }
+
+        if (tho) parsedString += tho + " thousand ";
+        if (hun) parsedString += hun + " hundred ";
+        if (hun && (ten || one)) parsedString += "and ";
+        if (ten) parsedString += ten + " ";
+        if (one) parsedString += one;
+        allNumbersString += " " + parsedString;
+        console.log(parsedString);
+      }
+    }
+
+    console.log("Problem 17: " + allNumbersString.replace(/\s/g, "").length);
+  },
 };
 
 module.exports = problems;
-console.log(JSON.stringify(problems.problem15(20)));
+//console.log(JSON.stringify(problems.problem16(2, 1000)));
+problems.problem17(1000);
 debugger;
