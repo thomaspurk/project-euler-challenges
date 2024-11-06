@@ -7,6 +7,8 @@
  * What is the 10001st prime number?
  */
 
+import { isPrime } from "../utils/is-prime.js";
+
 /**
  * @function problem1 Computes the answer to Project Euler Problem #7 based on the input.
  * @export
@@ -19,8 +21,8 @@ export function problem7(nthPrime) {
   let test = 2; // We know 0 and 1 are not prime numbers.
   // 10001st item in primes array is index 10000
   while (!primes[nthPrime - 1]) {
-    if (this.isPrime(test)) primes.push(test);
+    if (isPrime(test)) primes.push(test);
     test++;
   }
-  console.log("Problem 7: " + primes[10000]);
+  return primes[nthPrime - 1];
 }

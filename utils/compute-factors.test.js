@@ -3,9 +3,9 @@
  * @author Thomas J. Purk
  */
 import { it, expect, describe } from "vitest";
-import { factors } from "./factors.js";
+import { computeFactors } from "./compute-factors.js";
 
-describe("factors()", () => {
+describe("computeFactors()", () => {
   it("sould return and object with specific properties", () => {
     // Arrange
     const input = 28;
@@ -14,7 +14,7 @@ describe("factors()", () => {
       primeFactors: [2, 7],
     };
     // Act
-    const result = factors(input);
+    const result = computeFactors(input);
     // Assert
     expect(result.factors).toEqual(
       expect.arrayContaining(expectedResult.factors)

@@ -6,7 +6,7 @@
  * What is the largest prime factor of the number 600851475143?
  */
 
-import { factors } from "../utils/factors.js";
+import { computeFactors } from "../utils/compute-factors.js";
 
 /**
  * @function problem3 Computes the answer to Project Euler Problem #1 based on the input.
@@ -17,7 +17,7 @@ import { factors } from "../utils/factors.js";
 //cmd: node -e 'require("./app.js").problem3(600851475143)'
 export function problem3(n) {
   let answer = 0;
-  let objFactors = factors(n);
+  let objFactors = computeFactors(n);
   // Find the largest number in the prim factors array
   objFactors.primeFactors.forEach((pf) => {
     if (pf > answer) answer = pf;

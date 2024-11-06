@@ -18,12 +18,12 @@
  */
 
 /**
- * @function factors Determines the factors of a number.
+ * @function computeFactors Determines the factors of a number.
  * @export
  * @param {number} n The input number for which to calculate the factors
  * @return {object} An object with a factors propery storing the and array of factors, and a primeFactors propery containing an array of primary factors
  */
-export function factors(n) {
+export function computeFactors(n) {
   // Collect factors as discovered
   let returnObject = {
     factors: [1, n],
@@ -43,7 +43,7 @@ export function factors(n) {
       // these will aloo be factors of n
       // But to avoid endless loop do not retest input n
       if (n != test) {
-        let testResults = factors(test); // recursive call
+        let testResults = computeFactors(test); // recursive call
         // Merge the data into the return object
         returnObject.factors = returnObject.factors.concat(testResults.factors);
         returnObject.primeFactors = returnObject.primeFactors.concat(
@@ -51,7 +51,7 @@ export function factors(n) {
         );
       }
       if (n != result) {
-        let resultResults = factors(result); // recursive call
+        let resultResults = computeFactors(result); // recursive call
         // Merge the data into the return object
         returnObject.factors = returnObject.factors.concat(
           resultResults.factors

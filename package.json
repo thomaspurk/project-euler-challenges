@@ -5,7 +5,7 @@
   "description": "Challenging and fun way to demonstrate existing software develop skills and learn some new things!",
   "main": "app.js",
   "scripts": {
-    "test": "vitest run --reporter default"
+    "test": "vitest run --reporter verbose"
   },
   "author": "Thomas Purk",
   "license": "ISC",
