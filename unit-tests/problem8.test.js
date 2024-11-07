@@ -9,7 +9,7 @@
  */
 
 import { it, expect, describe } from "vitest";
-import { problem8 } from "./problem8.js";
+import { problem8 } from "../problems/problem8.js";
 
 describe("problem8()", () => {
   it("sould return the correct answer to the sample problem", () => {

@@ -1,17 +1,17 @@
 /**
- * @file Unit tests for problem3.js
+ * @file Unit tests for problem2.js
  * @author Thomas J. Purk
  */
 import { it, expect, describe } from "vitest";
-import { problem3 } from "./problem3.js";
+import { problem2 } from "../problems/problem2.js";
 
-describe("problem3()", () => {
+describe("problem2()", () => {
   it("sould return the correct answer to the sample problem", () => {
     // Arrange
-    const input = 13195;
-    const expectedResult = 29;
+    const input = 10;
+    const expectedResult = 231;
     // Act
-    const result = problem3(input);
+    const result = problem2(input);
     // Assert
     expect(result).toEqual(expectedResult);
   });

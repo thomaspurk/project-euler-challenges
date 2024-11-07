@@ -10,7 +10,7 @@
  * Find the product abc.'
  */
 import { it, expect, describe } from "vitest";
-import { problem9 } from "./problem9.js";
+import { problem9 } from "../problems/problem9.js";
 
 describe("problem9()", () => {
   it("sould return the correct answer to the sample problem", () => {

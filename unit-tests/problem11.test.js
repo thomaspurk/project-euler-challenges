@@ -8,7 +8,7 @@
  * What is the greatest product of four adjacent numbers in the same direction (up, down, left, right, or diagonally) in the 20×20 grid?
  */
 import { it, expect, describe } from "vitest";
-import { problem11 } from "./problem11.js";
+import { problem11 } from "../problems/problem11.js";
 
 describe("problem11()", () => {
   it("sould return the correct answer to the sample problem", () => {

@@ -6,7 +6,7 @@
  * What is the 10001st prime number?
  */
 import { it, expect, describe } from "vitest";
-import { problem7 } from "./problem7.js";
+import { problem7 } from "../problems/problem7.js";
 
 describe("problem7()", () => {
   it("sould return the correct answer to the sample problem", () => {

@@ -6,7 +6,7 @@
  * Find the sum of all the primes below two million.
  */
 import { it, expect, describe } from "vitest";
-import { problem10 } from "./problem10.js";
+import { problem10 } from "../problems/problem10.js";
 
 describe("problem10()", () => {
   it("sould return the correct answer to the sample problem", () => {

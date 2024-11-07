@@ -7,7 +7,7 @@
  * Find the largest palindrome made from the product of two 3-digit numbers.
  */
 import { it, expect, describe } from "vitest";
-import { problem4 } from "./problem4.js";
+import { problem4 } from "../problems/problem4.js";
 
 describe("problem4()", () => {
   it("should return the correct answer to the sample problem", () => {

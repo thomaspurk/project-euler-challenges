@@ -8,7 +8,7 @@
  * numbers from 1 to 20?
  */
 import { it, expect, describe } from "vitest";
-import { problem5 } from "./problem5.js";
+import { problem5 } from "../problems/problem5.js";
 
 describe("problem5()", () => {
   it("sould return the correct answer to the sample problem", () => {

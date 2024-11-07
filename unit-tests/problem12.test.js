@@ -17,7 +17,7 @@
  * What is the value of the first triangle number to have over five hundred divisors?
  */
 import { it, expect, describe } from "vitest";
-import { problem12 } from "./problem12.js";
+import { problem12 } from "../problems/problem12.js";
 
 describe("problem12()", () => {
   it("sould return the correct answer to the sample problem", () => {

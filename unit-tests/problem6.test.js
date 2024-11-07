@@ -13,7 +13,7 @@
  * and the square of the sum.
  */
 import { it, expect, describe } from "vitest";
-import { problem6 } from "./problem6.js";
+import { problem6 } from "../problems/problem6.js";
 
 describe("problem6()", () => {
   it("sould return the correct answer to the sample problem", () => {

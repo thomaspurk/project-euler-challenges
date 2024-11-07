@@ -6,7 +6,7 @@
  * Find the sum of all the multiples of 3 or 5 below 1000.
  */
 import { it, expect, describe } from "vitest";
-import { problem1 } from "./problem1.js";
+import { problem1 } from "../problems/problem1.js";
 
 describe("problem1()", () => {
   it("sould return the correct answer to the sample problem", () => {
