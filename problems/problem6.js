@@ -1,6 +1,7 @@
 /**
  * @file Contains a function that answer Project Euler Problem 6
  * @author Thomas J. Purk
+ *
  * The sum of the squares of the first ten natural numbers is,
  * 1^2 + 2^2 + ... + 10^2 = 385.
  * The square of the sum of the first ten natural numbers is,
@@ -21,11 +22,11 @@
  */
 
 export function problem6(n) {
-  let sumOfSquares = 0;
+  let squareOfSum = 0;
   let sumOfNaturalNumbers = 0;
   for (let nn = 1; nn <= n; nn++) {
     sumOfNaturalNumbers += nn;
-    sumOfSquares += Math.pow(nn, 2);
+    squareOfSum += Math.pow(nn, 2);
   }
-  return Math.pow(sumOfNaturalNumbers, 2) - sumOfSquares;
+  return Math.pow(sumOfNaturalNumbers, 2) - squareOfSum;
 }

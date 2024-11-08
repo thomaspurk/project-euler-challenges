@@ -20,7 +20,9 @@ export function problem13(digits, itemCount) {
   itemCount = Math.min(itemCount, arr50DigitNumbers.length);
 
   for (let i = 0; i < itemCount; i++) {
-    answer += arr50DigitNumbers[i];
+    arr50DigitNumbers[i].forEach((digit) => {
+      answer += digit;
+    });
   }
 
   // JavaScript uses exponent format numbers for large number by default

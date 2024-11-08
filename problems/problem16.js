@@ -11,7 +11,6 @@ import cp from "child_process";
 
 /**
  * @function problem16 Computes the answer to Project Euler Problem #16 based on the input.
- * @export
  * @param {number} n The input to problem 16.
  * @return {number} The answer to problem 16.
  */

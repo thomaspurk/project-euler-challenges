@@ -11,7 +11,7 @@
  */
 
 /**
- * @function problem1 Computes the answer to Project Euler Problem #17 based on the input.
+ * @function problem17 Computes the answer to Project Euler Problem #17 based on the input.
  * @export
  * @param {number} n The input to problem 17.
  * @return {number} The answer to problem 17.
@@ -58,7 +58,7 @@ export function problem17(n) {
     // Check for direct mapping
     if (map[numString]) {
       allNumbersString += " " + map[numString];
-      console.log(map[numString]);
+      // console.log(map[numString]);
     } else {
       // parsing is required
       let parsedString = "";
@@ -85,7 +85,7 @@ export function problem17(n) {
       if (ten) parsedString += ten + " ";
       if (one) parsedString += one;
       allNumbersString += " " + parsedString;
-      console.log(parsedString);
+      // console.log(parsedString);
     }
   }
 
