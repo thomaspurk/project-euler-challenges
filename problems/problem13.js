@@ -20,14 +20,12 @@ export function problem13(digits, itemCount) {
   itemCount = Math.min(itemCount, arr50DigitNumbers.length);
 
   for (let i = 0; i < itemCount; i++) {
-    arr50DigitNumbers[i].forEach((digit) => {
-      answer += digit;
-    });
+    answer += arr50DigitNumbers[i];
   }
 
   // JavaScript uses exponent format numbers for large number by default
-  // toPrecision converts the number to a string retaining the specified precision.
-  answer = answer.toPrecision(50);
+  // toPrecision converts the number to a string retaining the specified precision, upto 100.
+  answer = answer.toPrecision(100);
   // Get the requested number of digits
   answer = answer.substring(0, digits);
   // Convert back to a number

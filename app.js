@@ -16,7 +16,9 @@ import { problem15 } from "./problems/problem15.js";
 import { problem16 } from "./problems/problem16.js";
 import { problem17 } from "./problems/problem17.js";
 import { problem18 } from "./problems/problem18.js";
-import { problem18_67 } from "./problems/problem18_67.js";
+import { problem19 } from "./problems/problem19.js";
+import { problem20 } from "./problems/problem20.js";
+import { problem21 } from "./problems/problem21.js";
 import { answerKey } from "./data/answers-data.js";
 
 // let answer1 = problem1(1000);
@@ -101,205 +103,98 @@ import { answerKey } from "./data/answers-data.js";
 //     (answerKey.problem10 == answer10 ? "Correct" : "Incorrect")
 // );
 
-let answer11 = problem11();
+// let answer11 = problem11();
+// console.log(
+//   "Answer 11: " +
+//     answer11 +
+//     " " +
+//     (answerKey.problem11 == answer11 ? "Correct" : "Incorrect")
+// );
+
+// let answer12 = problem12(500);
+// console.log(
+//   "Answer 12: " +
+//     answer12 +
+//     " " +
+//     (answerKey.problem12 == answer12 ? "Correct" : "Incorrect")
+// );
+
+// let answer13 = problem13(10, 100);
+// console.log(
+//   "Answer 13: " +
+//     answer13 +
+//     " " +
+//     (answerKey.problem13 == answer13 ? "Correct" : "Incorrect")
+// );
+
+// let answer14 = problem14(1000000).longestStartingNumber;
+// console.log(
+//   "Answer 14: " +
+//     answer14 +
+//     " " +
+//     (answerKey.problem14 == answer14 ? "Correct" : "Incorrect")
+// );
+
+// let answer15 = problem15(20);
+// console.log(
+//   "Answer 15: " +
+//     answer15 +
+//     " " +
+//     (answerKey.problem15 == answer15 ? "Correct" : "Incorrect")
+// );
+
+// let answer16 = problem16(2, 1000);
+// console.log(
+//   "Answer 16: " +
+//     answer16 +
+//     " " +
+//     (answerKey.problem16 == answer16 ? "Correct" : "Incorrect")
+// );
+
+// let answer17 = problem17(1000);
+// console.log(
+//   "Answer 17: " +
+//     answer17 +
+//     " " +
+//     (answerKey.problem17 == answer17 ? "Correct" : "Incorrect")
+// );
+
+let answer18 = problem18();
 console.log(
-  "Answer 11: " +
-    answer11 +
+  "Answer 18: " +
+    answer18 +
     " " +
-    (answerKey.problem11 == answer11 ? "Correct" : "Incorrect")
+    (answerKey.problem18 == answer18 ? "Correct" : "Incorrect")
 );
 
-let answer12 = problem12(500);
+let answer19 = problem19();
 console.log(
-  "Answer 12: " +
-    answer12 +
+  "Answer 19: " +
+    answer19 +
     " " +
-    (answerKey.problem12 == answer12 ? "Correct" : "Incorrect")
+    (answerKey.problem19 == answer19 ? "Correct" : "Incorrect")
 );
 
-let answer13 = problem13(10, 100);
+let answer20 = problem20(100);
 console.log(
-  "Answer 13: " +
-    answer13 +
+  "Answer 20: " +
+    answer20 +
     " " +
-    (answerKey.problem13 == answer13 ? "Correct" : "Incorrect")
+    (answerKey.problem20 == answer20 ? "Correct" : "Incorrect")
+);
+
+let answer21 = problem21(10000);
+console.log(
+  "Answer 21: " +
+    answer21 +
+    " " +
+    (answerKey.problem21 == answer21 ? "Correct" : "Incorrect")
 );
 
 // const problems = {
 // ,
-//   problem19: function () {
-//     // You are given the following information, but you may prefer to do some research for yourself.
-//     // 1 Jan 1900 was a Monday.
-//     // Thirty days has September,
-//     // April, June and November.
-//     // All the rest have thirty-one,
-//     // Saving February alone,
-//     // Which has twenty-eight, rain or shine.
-//     // And on leap years, twenty-nine.
-//     // A leap year occurs on any year evenly divisible by 4, but not on a century unless it is divisible by 400.
-//     // How many Sundays fell on the first of the month during the twentieth century (1 Jan 1901 to 31 Dec 2000)?
 
-//     let daysPerMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
-//     let monthName = [
-//       "Jan",
-//       "Feb",
-//       "Mar",
-//       "Apr",
-//       "May",
-//       "Jun",
-//       "Jul",
-//       "Aug",
-//       "Sep",
-//       "Oct",
-//       "Nov",
-//       "Dec",
-//     ];
-//     let dayName = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-//     let year = 1900;
-//     let dayOfMonth = 1;
-//     let monthIndex = 0; // January
-//     let dayOfWeekIndex = 1; // Monday
-//     let endYearMonthDay = 20001131;
 
-//     let answer = 0;
-//     while (year * 10000 + monthIndex * 100 + dayOfMonth <= endYearMonthDay) {
-//       // Is today a Sunday and the 1st of the month?
-//       if (year >= 1901 && dayOfMonth == 1 && dayOfWeekIndex == 0) {
-//         console.log(
-//           dayName[dayOfWeekIndex] +
-//             ", " +
-//             monthName[monthIndex] +
-//             " " +
-//             dayOfMonth +
-//             " " +
-//             year
-//         );
-//         answer++;
-//       }
-
-//       // What is tomorrow's date?
-//       // 1 - How many days in the currnet month?
-//       let mDays = daysPerMonth[monthIndex];
-//       // Test for leap year
-//       if (
-//         (year % 100 == 0 && year % 400 == 0 && monthIndex == 1) || // Centry year?
-//         (year % 100 != 0 && year % 4 == 0 && monthIndex == 1)
-//       ) {
-//         mDays++;
-//       }
-//       // Ready for next month?
-//       if (dayOfMonth == mDays) {
-//         dayOfMonth = 1;
-//         // Ready for a new year?
-//         if (monthIndex == 11) {
-//           monthIndex = 0;
-//           year++;
-//         } else {
-//           monthIndex++;
-//         }
-//       } else {
-//         dayOfMonth++;
-//       }
-//       // Ready for new week?
-//       if (dayOfWeekIndex == 6) {
-//         dayOfWeekIndex = 0;
-//       } else {
-//         dayOfWeekIndex++;
-//       }
-//     }
-
-//     console.log("Problem 19: " + answer);
-//   },
-//   problem20: function (n) {
-//     // n! means n×(n−1)×⋯×3×2×1.\
-//     // For example, 10!=10×9×⋯×3×2×1=3628800,and the sum of the digits in the
-//     // number 10! is 3+6+2+8+8+0+0=27.
-//     //
-//     // Find the sum of the digits in the number 100!.
-//     let answer = n;
-//     let productExpresion = "";
-//     while (n > 1) {
-//       n--;
-//       productExpresion += n;
-//       if (n != 1) productExpresion += " * ";
-//     }
-//     // Javscript's math functions return scientic exponent results for large numbers
-//     // which will not contain all the digits.
-//     let sumExpression = cp
-//       .execSync("bc --expression='" + productExpresion + "'")
-//       .toString();
-//     sumExpression = sumExpression.replace(/\n|\\/g, "").split("").join(" + ");
-//     answer = cp.execSync("bc --expression='" + sumExpression + "'").toString();
-//     console.log("Problem 19: " + answer);
-//   },
-//   problem21: function () {
-//     // Let d(n) be defined as the sum of proper divisors of n (numbers less than n which
-//     // divide evenly into n).If d(a)=b and d(b)=a, where a≠b, then a and b are an
-//     // amicable pair and each of a and b are called amicable numbers.
-//     //
-//     // For example, the proper divisors of 220 are 1,2,4,5,10,11,20,22,44,55 and 110;
-//     // therefore d(220)=284. The proper divisors of 284 are 1,2,4,71 and 142;
-//     // so d(284)=220.Evaluate the sum of all the amicable numbers under 10000.
-//     let answer = 0;
-//     let register = {};
-//     let amicablePairs = [];
-//     for (let n = 1; n < 10000; n++) {
-//       let sum = 0;
-//       let factors = this.factors(n).factors;
-//       factors.forEach((f) => {
-//         if (f != n) sum += f;
-//       });
-//       register[n] = sum;
-//       if (register[sum] && sum != n && register[sum] == n) {
-//         amicablePairs.push({ a: sum, b: n });
-//       }
-//     }
-//     amicablePairs.forEach((ap) => {
-//       answer += ap.a + ap.b;
-//     });
-//     console.log("Problem 21: " + answer);
-//   },
-
-//   problem22: function () {
-//     // Using names.txt (right click and 'Save Link/Target As...'), a 46K text file containing over
-//     // five-thousand first names, begin by sorting it into alphabetical order. Then working out the
-//     // alphabetical value for each name, multiply this value by its alphabetical position in the list
-//     // to obtain a name score.
-//     //
-//     // For example, when the list is sorted into alphabetical order, COLIN,
-//     // which is worth 3+15+12+9+14=53, is the 938th name in the list. So, COLIN would obtain a score of 938×53=49714.
-//     //
-//     // What is the total of all the name scores in the file?
-//     let answer = 0;
-//     let alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-
-//     let names = fs
-//       .readFileSync("0022_names.txt")
-//       .toString()
-//       .replace(/\"/g, "")
-//       .split(",");
-
-//     names.sort((a, b) => {
-//       if (a.toUpperCase() < b.toUpperCase()) {
-//         return -1;
-//       } else {
-//         return 0;
-//       }
-//     });
-
-//     let count = 0;
-//     names.forEach((name) => {
-//       count++;
-//       let alphaValue = 0;
-//       name.split("").forEach((l) => {
-//         alphaValue += alphabet.indexOf(l.toUpperCase()) + 1;
-//       });
-//       answer += alphaValue * count;
-//     });
-
-//     console.log("Problem: 22: " + answer);
-//     debugger;
-//   },
 //   problem23: function () {
 //     //A perfect number is a number for which the sum of its proper divisors is
 //     // exactly equal to the number. For example, the sum of the proper divisors
