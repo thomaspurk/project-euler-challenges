@@ -2,6 +2,8 @@
 
 Challenging and fun way to demonstrate and practice existing software develop skills and learn some new things!
 
+![Sample Unit Testing Output](readme-screenshot.png "Sample Unit Testing Output")
+
 ## Introduction
 
 [Project Euler](https://projecteuler.net/about) offers mathematical and computer programming challenges that encourages participants to develop new skills and find enjoyments in the world of mathematics.
