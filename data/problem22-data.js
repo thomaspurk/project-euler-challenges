@@ -1,3 +1,8 @@
+/**
+ * @file Contains the data needed for Project Euler Problem #22
+ * @author Thomas J. Purk
+ */
+
 export const names = [
   "MARY",
   "PATRICIA",

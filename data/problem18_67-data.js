@@ -1,3 +1,8 @@
+/**
+ * @file Contains the data needed for Project Euler Problems #18 & #67
+ * @author Thomas J. Purk
+ */
+
 // prettier-ignore
 export const pyramid1 = [
   [3], 

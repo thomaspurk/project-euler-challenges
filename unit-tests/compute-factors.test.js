@@ -1,9 +1,9 @@
 /**
- * @file Unit tests for factors.js
+ * @file Unit tests for compute-factors.js
  * @author Thomas J. Purk
  */
 import { it, expect, describe } from "vitest";
-import { computeFactors } from "./compute-factors.js";
+import { computeFactors } from "../utils/compute-factors.js";
 
 describe("computeFactors()", () => {
   it("sould return and object with specific properties", () => {

@@ -1,5 +1,5 @@
 /**
- * @file Unit tests for problem1.js
+ * @file Unit tests for problem21.js
  * @author Thomas J. Purk
  *
  * Let d(n) be defined as the sum of proper divisors of n (numbers less than n which

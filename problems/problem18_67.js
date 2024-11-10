@@ -1,5 +1,5 @@
 /**
- * @file Contains a function that answer Project Euler Problem 18
+ * @file Contains a function that answer Project Euler Problem 18 & 67
  * @author Thomas J. Purk
  *
  *  By starting at the top of the triangle below and moving to adjacent numbers on the row

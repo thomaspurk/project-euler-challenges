@@ -1,3 +1,7 @@
+/**
+ * @file Contains the data needed for Project Euler Problem #8
+ * @author Thomas J. Purk
+ */
 export const digitsString =
   "73167176531330624919225119674426574742355349194934" +
   "96983520312774506326239578318016984801869478851843" +

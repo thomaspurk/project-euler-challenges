@@ -1,9 +1,9 @@
 /**
- * @file Unit tests for factors.js
+ * @file Unit tests for is-prime.js
  * @author Thomas J. Purk
  */
 import { it, expect, describe } from "vitest";
-import { isPrime } from "./is-prime.js";
+import { isPrime } from "../utils/is-prime.js";
 
 describe("isPrime()", () => {
   it("should return false for 1", () => {

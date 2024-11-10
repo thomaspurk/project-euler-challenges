@@ -1,3 +1,8 @@
+/**
+ * @file Contains the data needed for Project Euler Problem #11
+ * @author Thomas J. Purk
+ */
+
 // prettier-ignore
 export const grid20x20 = [
         [ 8, 2,22,97,38,15, 0,40, 0,75, 4, 5, 7,78,52,12,50,77,91, 8],

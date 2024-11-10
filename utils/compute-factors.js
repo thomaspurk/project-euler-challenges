@@ -22,7 +22,8 @@ import { isPrime } from "../utils/is-prime.js";
  * @function computeFactors Determines the factors of a number.
  * @export
  * @param {number} n The input number for which to calculate the factors
- * @return {object} An object with a factors propery storing the and array of factors, and a primeFactors propery containing an array of primary factors
+ * @return {object} An object with a factors propery storing the and array of factors, and a primeFactors propery containing an array of primary factors.
+ * @todo This function can be slow especially for large numbers. Investigate options for improving performance.
  */
 export function computeFactors(n) {
   // Collect factors as discovered
@@ -32,7 +33,7 @@ export function computeFactors(n) {
   };
 
   // Find numbers, starting at two, that divide the input number with 0 remainder
-  for (let i = 1; i < Math.floor(Math.sqrt(n)); i++) {
+  for (let i = 1; i <= Math.floor(Math.sqrt(n)); i++) {
     if (n % i == 0) {
       returnObject.factors.push(i);
       if (isPrime(i)) {

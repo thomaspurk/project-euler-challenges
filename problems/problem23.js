@@ -1,5 +1,5 @@
 /**
- * @file Contains a function that answer Project Euler Problem 1
+ * @file Contains a function that answer Project Euler Problem 23
  * @author Thomas J. Purk
  *
  * A perfect number is a number for which the sum of its proper divisors is
@@ -25,7 +25,6 @@ import { computeFactors } from "../utils/compute-factors.js";
 
 /**
  * @function problem23
- *
  * @export
  * @param {number} limit Calculate the solution using items below this number
  */
@@ -35,7 +34,7 @@ export function problem23(limit = 28123) {
   let abundantNumbers = [];
   // Scan number up to the limit to test for abundant numbers
   for (let n = 1; n <= limit; n++) {
-    let t = { factorSum: 0 };
+    let t = { factorSum: 1 }; // 1 is not included in the proper factors, add it here.
     t.factors = computeFactors(n).properFactors;
     t.factors.forEach((f) => {
       t.factorSum += f;
@@ -67,9 +66,9 @@ export function problem23(limit = 28123) {
 }
 
 export function run() {
-  let keyAnswer = 31626;
+  let keyAnswer = 4179871;
   let answer = problem23();
-  let message = "Answer 21: " + answer;
+  let message = "Answer 23: " + answer;
   if (keyAnswer) {
     message += keyAnswer == answer ? " Correct" : " Incorrect";
   }
