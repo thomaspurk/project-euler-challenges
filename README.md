@@ -10,7 +10,7 @@ Challenging and fun way to demonstrate and practice existing software develop sk
 
 ## Progress
 
-This code repository contains functions with produce correct solutions for the following checked problems. The goal is to add new solutions over time.
+This code repository contains functions that produce correct solutions for the following checked problems. The goal is to learn new things and have more fun by adding new solutions over time!
 
 |                       |                       |                       |                       |                       |                       |                       |                       |                       |                       |
 | --------------------: | --------------------: | --------------------: | --------------------: | --------------------: | --------------------: | --------------------: | --------------------: | --------------------: | --------------------: |
