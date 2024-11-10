@@ -8,7 +8,7 @@ Challenging and fun way to demonstrate and practice existing software develop sk
 
 ## Progress
 
-This code repository contains functions with produce correct solutions for the following checked problems.
+This code repository contains functions with produce correct solutions for the following checked problems. The goal is to add new solutions over time.
 
 |                       |                       |                       |                       |                       |                       |                       |                       |                       |                       |
 | --------------------: | --------------------: | --------------------: | --------------------: | --------------------: | --------------------: | --------------------: | --------------------: | --------------------: | --------------------: |
@@ -32,3 +32,30 @@ This code repository contains functions with produce correct solutions for the f
 | Unit Testing  | vitest      |
 | Comments      | JSDoc       |
 | Documentation | Markdown    |
+| IDE           | VS Code     |
+| Platform      | MacOS       |
+| Repository    | GitHub.com  |
+
+## Limitations
+
+Solving some questions requires working with JavaScript's 21 digit limit on integers. By default, any integer over 21 digits is converted to an exponent expression. This can make determining the correct solution impossible.
+
+```javascript
+let number21 = 10000000000000000000;
+consol.log(number21);
+// Prints: 10000000000000000000
+
+let number22 = 1000000000000000000000;
+console.log(number22);
+// Prints: 1e+21
+```
+
+There are a number of ways around this issue all of which have some limitations. The [toPrecision()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toPrecision) function is very helpful for numbers containing upto 100 digits. But cannot be used accurately with larger numbers.
+
+Therefore, some solutions in this project rely on the zsh shell's bc application. Executing this project on another platform would require editing the code for these functions. The command line statement is executed using the [Node.js Child](https://nodejs.org/api/child_process.html) Process module.
+
+```javascript
+// Example: Compute the a raised to the power of b
+import cp from "child_process";
+const result = cp.execSync(`bc --expression= ${a} ^ ${b}`);
+```
