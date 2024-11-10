@@ -29,3 +29,13 @@ export function problem2(n) {
   }
   return answer;
 }
+
+export function run() {
+  let keyAnswer = 4613732;
+  let answer2 = problem2(4000000);
+  let message = "Answer 2: " + answer2;
+  if (keyAnswer) {
+    message += keyAnswer == answer2 ? " Correct" : " Incorrect";
+  }
+  console.log(message);
+}

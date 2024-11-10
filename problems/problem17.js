@@ -91,3 +91,13 @@ export function problem17(n) {
 
   return allNumbersString.replace(/\s/g, "").length;
 }
+
+export function run() {
+  let keyAnswer = 21124;
+  let answer = problem17(1000);
+  let message = "Answer 17: " + answer;
+  if (keyAnswer) {
+    message += keyAnswer == answer ? " Correct" : " Incorrect";
+  }
+  console.log(message);
+}

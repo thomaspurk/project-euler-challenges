@@ -48,3 +48,13 @@ import { problem18_67 } from "../problems/problem18_67.js";
 export function problem18(problemNumber = 18) {
   return problem18_67(problemNumber);
 }
+
+export function run() {
+  let keyAnswer = 1074;
+  let answer = problem18();
+  let message = "Answer 18: " + answer;
+  if (keyAnswer) {
+    message += keyAnswer == answer ? " Correct" : " Incorrect";
+  }
+  console.log(message);
+}

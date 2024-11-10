@@ -32,3 +32,13 @@ export function problem8(n) {
   }
   return answer;
 }
+
+export function run() {
+  let keyAnswer = 23514624000;
+  let answer = problem8(13);
+  let message = "Answer 8: " + answer;
+  if (keyAnswer) {
+    message += keyAnswer == answer ? " Correct" : " Incorrect";
+  }
+  console.log(message);
+}

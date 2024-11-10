@@ -30,3 +30,13 @@ export function problem6(n) {
   }
   return Math.pow(sumOfNaturalNumbers, 2) - squareOfSum;
 }
+
+export function run() {
+  let keyAnswer = 25164150;
+  let answer = problem6(100);
+  let message = "Answer 6: " + answer;
+  if (keyAnswer) {
+    message += keyAnswer == answer ? " Correct" : " Incorrect";
+  }
+  console.log(message);
+}

@@ -40,3 +40,13 @@ export function problem16(a, b) {
 
   return answer;
 }
+
+export function run() {
+  let keyAnswer = 1366;
+  let answer = problem16(2, 1000);
+  let message = "Answer 16: " + answer;
+  if (keyAnswer) {
+    message += keyAnswer == answer ? " Correct" : " Incorrect";
+  }
+  console.log(message);
+}

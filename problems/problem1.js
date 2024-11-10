@@ -21,3 +21,13 @@ export function problem1(n) {
   }
   return answer;
 }
+
+export function run() {
+  let keyAnswer = 233168;
+  let answer = problem1(1000);
+  let message = "Answer 1: " + answer;
+  if (keyAnswer) {
+    message += keyAnswer == answer ? " Correct" : " Incorrect";
+  }
+  console.log(message);
+}

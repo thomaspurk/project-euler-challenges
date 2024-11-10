@@ -44,3 +44,13 @@ export function problem21(n) {
   });
   return answer;
 }
+
+export function run() {
+  let keyAnswer = 31626;
+  let answer = problem21(10000);
+  let message = "Answer 21: " + answer;
+  if (keyAnswer) {
+    message += keyAnswer == answer ? " Correct" : " Incorrect";
+  }
+  console.log(message);
+}

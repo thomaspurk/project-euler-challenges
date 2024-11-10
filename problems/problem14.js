@@ -44,3 +44,13 @@ export function problem14(startingNumber) {
 
   return trackResults;
 }
+
+export function run() {
+  let keyAnswer = 837799;
+  let answer = problem14(1000000).longestStartingNumber;
+  let message = "Answer 14: " + answer;
+  if (keyAnswer) {
+    message += keyAnswer == answer ? " Correct" : " Incorrect";
+  }
+  console.log(message);
+}

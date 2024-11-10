@@ -31,3 +31,13 @@ export function problem13(digits, itemCount) {
   // Convert back to a number
   return parseInt(answer);
 }
+
+export function run() {
+  let keyAnswer = 5537376230;
+  let answer = problem13(10, 100);
+  let message = "Answer 13: " + answer;
+  if (keyAnswer) {
+    message += keyAnswer == answer ? " Correct" : " Incorrect";
+  }
+  console.log(message);
+}

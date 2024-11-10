@@ -42,3 +42,13 @@ export function problem19(end = 20001231, start = 19010101) {
 
   return answer;
 }
+
+export function run() {
+  let keyAnswer = 171;
+  let answer = problem19();
+  let message = "Answer 19: " + answer;
+  if (keyAnswer) {
+    message += keyAnswer == answer ? " Correct" : " Incorrect";
+  }
+  console.log(message);
+}

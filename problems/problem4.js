@@ -10,7 +10,7 @@
 /**
  * @function problem4 Computes the answer to Project Euler Problem #4 based on the input.
  * @export
- * @param {number} digitCount the number of digits in the factor number.
+ *  @param {number} digitCount the number of digits in the factor number.
  * @return {number} The answer to problem 4.
  */
 export function problem4(digitCount) {
@@ -32,4 +32,14 @@ export function problem4(digitCount) {
     }
   }
   return answer;
+}
+
+export function run() {
+  let keyAnswer = 906609;
+  let answer = problem4(3);
+  let message = "Answer 4: " + answer;
+  if (keyAnswer) {
+    message += keyAnswer == answer ? " Correct" : " Incorrect";
+  }
+  console.log(message);
 }

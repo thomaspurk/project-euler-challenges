@@ -41,3 +41,13 @@ export function problem9(n) {
 
   return answer;
 }
+
+export function run() {
+  let keyAnswer = 31875000;
+  let answer = problem9(1000);
+  let message = "Answer 9: " + answer;
+  if (keyAnswer) {
+    message += keyAnswer == answer ? " Correct" : " Incorrect";
+  }
+  console.log(message);
+}

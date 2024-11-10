@@ -40,3 +40,13 @@ export function problem12(n) {
 
   return triangleNumber;
 }
+
+export function run() {
+  let keyAnswer = 76576500;
+  let answer = problem12(500);
+  let message = "Answer 12: " + answer;
+  if (keyAnswer) {
+    message += keyAnswer == answer ? " Correct" : " Incorrect";
+  }
+  console.log(message);
+}

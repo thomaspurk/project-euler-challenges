@@ -1,252 +1,36 @@
-import { problem1 } from "./problems/problem1.js";
-import { problem2 } from "./problems/problem2.js";
-import { problem3 } from "./problems/problem3.js";
-import { problem4 } from "./problems/problem4.js";
-import { problem5 } from "./problems/problem5.js";
-import { problem6 } from "./problems/problem6.js";
-import { problem7 } from "./problems/problem7.js";
-import { problem8 } from "./problems/problem8.js";
-import { problem9 } from "./problems/problem9.js";
-import { problem10 } from "./problems/problem10.js";
-import { problem11 } from "./problems/problem11.js";
-import { problem12 } from "./problems/problem12.js";
-import { problem13 } from "./problems/problem13.js";
-import { problem14 } from "./problems/problem14.js";
-import { problem15 } from "./problems/problem15.js";
-import { problem16 } from "./problems/problem16.js";
-import { problem17 } from "./problems/problem17.js";
-import { problem18 } from "./problems/problem18.js";
-import { problem19 } from "./problems/problem19.js";
-import { problem20 } from "./problems/problem20.js";
-import { problem21 } from "./problems/problem21.js";
+const problems = [
+  "./problems/problem1.js",
+  "./problems/problem2.js",
+  "./problems/problem3.js",
+  "./problems/problem4.js",
+  "./problems/problem5.js",
+  "./problems/problem6.js",
+  "./problems/problem7.js",
+  "./problems/problem8.js",
+  "./problems/problem9.js",
+  "./problems/problem10.js",
+  "./problems/problem11.js",
+  "./problems/problem12.js",
+  "./problems/problem13.js",
+  "./problems/problem14.js",
+  "./problems/problem15.js",
+  "./problems/problem16.js",
+  "./problems/problem17.js",
+  "./problems/problem18.js",
+  "./problems/problem19.js",
+  "./problems/problem20.js",
+  "./problems/problem21.js",
+  "./problems/problem22.js",
+];
+
 import { answerKey } from "./data/answers-data.js";
 
-// let answer1 = problem1(1000);
-// console.log(
-//   "Answer 1: " +
-//     answer1 +
-//     " " +
-//     (answerKey.problem1 == answer1 ? "Correct" : "Incorrect")
-// );
+problems.forEach((problem) => {
+  import(problem).then((module) => {
+    module.run(0);
+  });
+});
 
-// let answer2 = problem2(4000000);
-// console.log(
-//   "Answer 2: " +
-//     answer2 +
-//     " " +
-//     (answerKey.problem2 == answer2 ? "Correct" : "Incorrect")
-// );
-
-// let answer3 = problem3(600851475143);
-// console.log(
-//   "Answer 3: " +
-//     answer3 +
-//     " " +
-//     (answerKey.problem3 == answer3 ? "Correct" : "Incorrect")
-// );
-
-// let answer4 = problem4(3);
-// console.log(
-//   "Answer 4: " +
-//     answer4 +
-//     " " +
-//     (answerKey.problem4 == answer4 ? "Correct" : "Incorrect")
-// );
-
-// let answer5 = problem5([
-//   1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
-// ]);
-// console.log(
-//   "Answer 5: " +
-//     answer5 +
-//     " " +
-//     (answerKey.problem5 == answer5 ? "Correct" : "Incorrect")
-// );
-
-// let answer6 = problem6(100);
-// console.log(
-//   "Answer 6: " +
-//     answer6 +
-//     " " +
-//     (answerKey.problem6 == answer6 ? "Correct" : "Incorrect")
-// );
-
-// let answer7 = problem7(10001);
-// console.log(
-//   "Answer 7: " +
-//     answer7 +
-//     " " +
-//     (answerKey.problem7 == answer7 ? "Correct" : "Incorrect")
-// );
-
-// let answer8 = problem8(13);
-// console.log(
-//   "Answer 8: " +
-//     answer8 +
-//     " " +
-//     (answerKey.problem8 == answer8 ? "Correct" : "Incorrect")
-// );
-
-// let answer9 = problem9(1000);
-// console.log(
-//   "Answer 9: " +
-//     answer9 +
-//     " " +
-//     (answerKey.problem9 == answer9 ? "Correct" : "Incorrect")
-// );
-
-// let answer10 = problem10(2000000);
-// console.log(
-//   "Answer 10: " +
-//     answer10 +
-//     " " +
-//     (answerKey.problem10 == answer10 ? "Correct" : "Incorrect")
-// );
-
-// let answer11 = problem11();
-// console.log(
-//   "Answer 11: " +
-//     answer11 +
-//     " " +
-//     (answerKey.problem11 == answer11 ? "Correct" : "Incorrect")
-// );
-
-// let answer12 = problem12(500);
-// console.log(
-//   "Answer 12: " +
-//     answer12 +
-//     " " +
-//     (answerKey.problem12 == answer12 ? "Correct" : "Incorrect")
-// );
-
-// let answer13 = problem13(10, 100);
-// console.log(
-//   "Answer 13: " +
-//     answer13 +
-//     " " +
-//     (answerKey.problem13 == answer13 ? "Correct" : "Incorrect")
-// );
-
-// let answer14 = problem14(1000000).longestStartingNumber;
-// console.log(
-//   "Answer 14: " +
-//     answer14 +
-//     " " +
-//     (answerKey.problem14 == answer14 ? "Correct" : "Incorrect")
-// );
-
-// let answer15 = problem15(20);
-// console.log(
-//   "Answer 15: " +
-//     answer15 +
-//     " " +
-//     (answerKey.problem15 == answer15 ? "Correct" : "Incorrect")
-// );
-
-// let answer16 = problem16(2, 1000);
-// console.log(
-//   "Answer 16: " +
-//     answer16 +
-//     " " +
-//     (answerKey.problem16 == answer16 ? "Correct" : "Incorrect")
-// );
-
-// let answer17 = problem17(1000);
-// console.log(
-//   "Answer 17: " +
-//     answer17 +
-//     " " +
-//     (answerKey.problem17 == answer17 ? "Correct" : "Incorrect")
-// );
-
-let answer18 = problem18();
-console.log(
-  "Answer 18: " +
-    answer18 +
-    " " +
-    (answerKey.problem18 == answer18 ? "Correct" : "Incorrect")
-);
-
-let answer19 = problem19();
-console.log(
-  "Answer 19: " +
-    answer19 +
-    " " +
-    (answerKey.problem19 == answer19 ? "Correct" : "Incorrect")
-);
-
-let answer20 = problem20(100);
-console.log(
-  "Answer 20: " +
-    answer20 +
-    " " +
-    (answerKey.problem20 == answer20 ? "Correct" : "Incorrect")
-);
-
-let answer21 = problem21(10000);
-console.log(
-  "Answer 21: " +
-    answer21 +
-    " " +
-    (answerKey.problem21 == answer21 ? "Correct" : "Incorrect")
-);
-
-// const problems = {
-// ,
-
-
-//   problem23: function () {
-//     //A perfect number is a number for which the sum of its proper divisors is
-//     // exactly equal to the number. For example, the sum of the proper divisors
-//     // of 28 would be 1+2+4+7+14=28, which means that 28 is a perfect number.
-//     //
-//     // A number n is called deficient if the sum of its proper divisors is less
-//     // than n and it is called abundant if this sum exceeds n.
-//     //
-//     // As 12 is the smallest abundant number, 1+2+3+4+6=16, the smallest number
-//     // that can be written as the sum of two abundant numbers is 24. By mathematical
-//     // analysis, it can be shown that all integers greater than 28123 can be
-//     // written as the sum of two abundant numbers. However, this upper limit cannot
-//     // be reduced any further by analysis even though it is known that the greatest
-//     // number that cannot be expressed as the sum of two abundant numbers is less
-//     // than this limit.
-//     //
-//     // Find the sum of all the positive integers which cannot be written as the
-//     // sum of two abundant numbers.
-
-//     let answer = 0;
-//     let abundantNumbers = [];
-//     for (let n = 1; n <= 28123; n++) {
-//       let t = { factorSum: 0 };
-//       t.factors = this.factors(n).properFactors;
-//       t.factors.forEach((f) => {
-//         t.factorSum += f;
-//       });
-
-//       if (t.factorSum > n) {
-//         abundantNumbers.push(n);
-//       }
-//     }
-//     //(48,511,225)
-//     let abundantSums = [];
-//     abundantNumbers.forEach((an1) => {
-//       abundantNumbers.forEach((an2) => {
-//         if (an1 >= an2) {
-//           abundantSums.push(an1 + an2);
-//         }
-//       });
-//     });
-
-//     // final loop
-//     for (let n = 1; n <= 28123; n++) {
-//       if (abundantSums.indexOf(n) == -1) {
-//         answer += n;
-//       }
-//     }
-
-//     console.log("Problem: 23 " + answer);
-//     debugger;
-//   },
 //   permutate: function (digits, isBase) {
 //     let returnArray = [];
 //     // Last recursion, no need to permutate again.
@@ -347,4 +131,3 @@ console.log(
 //     console.log("Problem: 25 " + arrFib.length);
 //     debugger;
 //   },
-// };

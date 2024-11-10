@@ -25,3 +25,13 @@ export function problem3(n) {
 
   return answer;
 }
+
+export function run() {
+  let keyAnswer = 6857;
+  let answer = problem3(600851475143);
+  let message = "Answer 3: " + answer;
+  if (keyAnswer) {
+    message += keyAnswer == answer ? " Correct" : " Incorrect";
+  }
+  console.log(message);
+}

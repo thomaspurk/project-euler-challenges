@@ -1,6 +1,7 @@
 /**
  * @file Contains a function that answer Project Euler Problem 5
  * @author Thomas J. Purk
+ *
  * 2520 is the smallest number that can be divided by each of the numbers from
  * 1 to 10 without any remainder.
  *
@@ -34,4 +35,16 @@ export function problem5(arrNumbers) {
     test++;
   }
   return answer;
+}
+
+export function run() {
+  let keyAnswer = 232792560;
+  let answer = problem5([
+    1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
+  ]);
+  let message = "Answer 5: " + answer;
+  if (keyAnswer) {
+    message += keyAnswer == answer ? " Correct" : " Incorrect";
+  }
+  console.log(message);
 }

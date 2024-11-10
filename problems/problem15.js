@@ -79,3 +79,13 @@ function nextRouteStep(x, y, maxX, maxY) {
 
   return pathCount;
 }
+
+export function run() {
+  let keyAnswer = 137846528820;
+  let answer = problem15(20);
+  let message = "Answer 15: " + answer;
+  if (keyAnswer) {
+    message += keyAnswer == answer ? " Correct" : " Incorrect";
+  }
+  console.log(message);
+}

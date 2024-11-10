@@ -81,3 +81,13 @@ export function problem11() {
 
   return answer;
 }
+
+export function run() {
+  let keyAnswer = 70600674;
+  let answer = problem11();
+  let message = "Answer 11: " + answer;
+  if (keyAnswer) {
+    message += keyAnswer == answer ? " Correct" : " Incorrect";
+  }
+  console.log(message);
+}

@@ -16,6 +16,7 @@
  * 2 repeats 2 + 2 = 4 ->> 4 is missing need to add it
  * 7 repeats 7 + 7 = 14 ->> 14 is already in the factors array
  */
+import { isPrime } from "../utils/is-prime.js";
 
 /**
  * @function computeFactors Determines the factors of a number.
@@ -26,81 +27,36 @@
 export function computeFactors(n) {
   // Collect factors as discovered
   let returnObject = {
-    factors: [1, n],
+    factors: [],
     primeFactors: [],
   };
 
   // Find numbers, starting at two, that divide the input number with 0 remainder
-  for (let test = 2; test < n; test++) {
-    if (n % test == 0) {
-      let result = n / test;
-      // "test" is a factor of n so add it to the collection
-      returnObject.factors.push(test);
-      // the result of the factor test is also a factor of n, add it.
-      returnObject.factors.push(result);
-
-      // Determine what are the factors of our new factors,
-      // these will aloo be factors of n
-      // But to avoid endless loop do not retest input n
-      if (n != test) {
-        let testResults = computeFactors(test); // recursive call
-        // Merge the data into the return object
-        returnObject.factors = returnObject.factors.concat(testResults.factors);
-        returnObject.primeFactors = returnObject.primeFactors.concat(
-          testResults.primeFactors
-        );
+  for (let i = 1; i < Math.floor(Math.sqrt(n)); i++) {
+    if (n % i == 0) {
+      returnObject.factors.push(i);
+      if (isPrime(i)) {
+        returnObject.primeFactors.push(i);
       }
-      if (n != result) {
-        let resultResults = computeFactors(result); // recursive call
-        // Merge the data into the return object
-        returnObject.factors = returnObject.factors.concat(
-          resultResults.factors
-        );
-        returnObject.primeFactors = returnObject.primeFactors.concat(
-          resultResults.primeFactors
-        );
+      const n_i = n / i;
+      if (n_i != i) {
+        returnObject.factors.push(n_i);
+        if (isPrime(n_i)) {
+          returnObject.primeFactors.push(n_i);
+        }
       }
-
-      // No need to continue the loop, other factors will be discovered
-      // by the nested "factors" calls
-      break;
     }
   }
 
-  // Is n prime?
-  // Need 2 true conditions
-  if (
-    returnObject.factors.length == 2 &&
-    returnObject.factors.includes(n) &&
-    returnObject.factors.includes(1)
-  ) {
-    returnObject.primeFactors.push(n);
-  }
-  // Test for hidden factors
-  returnObject.factors.forEach((f) => {
-    if (n % f == 0 && !returnObject.factors.includes(n / f)) {
-      returnObject.factors.push(n / f);
-    }
-  });
-  // De-duplicate Factors && List Proper Factors
-  let ddFactors = [];
+  // List Proper Factors
   let properFactors = [];
   returnObject.factors.forEach((f) => {
-    if (!ddFactors.includes(f)) {
-      ddFactors.push(f);
-      if (f != n) {
-        properFactors.push(f);
-      }
+    if (f != n && f != 1) {
+      properFactors.push(f);
     }
   });
   returnObject.properFactors = properFactors;
-  returnObject.factors = ddFactors;
-  // De-duplicate Prime Factors
-  let ddPrimeFactors = [];
-  returnObject.primeFactors.forEach((f) => {
-    if (!ddPrimeFactors.includes(f)) ddPrimeFactors.push(f);
-  });
-  returnObject.primeFactors = ddPrimeFactors;
+
   // Send the Object back
   // console.log(JSON.stringify(returnObject));
   return returnObject;

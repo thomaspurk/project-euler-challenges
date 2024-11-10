@@ -42,3 +42,13 @@ export function problem20(n) {
     .replace(/\n|\\/g, "");
   return parseFloat(answer);
 }
+
+export function run() {
+  let keyAnswer = 648;
+  let answer = problem20(100);
+  let message = "Answer 20: " + answer;
+  if (keyAnswer) {
+    message += keyAnswer == answer ? " Correct" : " Incorrect";
+  }
+  console.log(message);
+}

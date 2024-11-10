@@ -26,3 +26,13 @@ export function problem7(nthPrime) {
   }
   return primes[nthPrime - 1];
 }
+
+export function run() {
+  let keyAnswer = 104743;
+  let answer = problem7(10001);
+  let message = "Answer 7: " + answer;
+  if (keyAnswer) {
+    message += keyAnswer == answer ? " Correct" : " Incorrect";
+  }
+  console.log(message);
+}
