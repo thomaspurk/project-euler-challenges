@@ -54,7 +54,7 @@ console.log(number22);
 
 There are a number of ways around this issue all of which have some limitations. The [toPrecision()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toPrecision) function is very helpful for numbers containing upto 100 digits. But cannot be used accurately with larger numbers.
 
-Therefore, some solutions in this project rely on the zsh shell's bc application. Executing this project on another platform would require editing the code for these functions. The command line statement is executed using the [Node.js Child](https://nodejs.org/api/child_process.html) Process module.
+Therefore, some solutions in this project rely on the zsh shell's bc application. Executing this project on another platform would require editing the code for these functions. The command line statement is executed using the [Node.js Child Process](https://nodejs.org/api/child_process.html) module.
 
 ```javascript
 // Example: Compute the a raised to the power of b
