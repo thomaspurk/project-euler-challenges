@@ -1,6 +1,6 @@
 # Project Euler Problems 1-100
 
-Challenging and fun way to demonstrate and practice existing software develop skills and learn some new things!
+Challenging and fun way to demonstrate and practice existing software development skills and learn some new things!
 
 ![Sample Unit Testing Output](readme-screenshot.png "Sample Unit Testing Output")
 
