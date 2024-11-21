@@ -30,7 +30,8 @@ const problems = [
   // "./problems/problem23.js",
   // "./problems/problem24.js",
   // "./problems/problem25.js",
-  "./problems/problem67.js",
+  // "./problems/problem67.js",
+  "./problems/problem26.js",
 ];
 
 /**
