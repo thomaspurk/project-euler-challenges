@@ -6,11 +6,18 @@
 
 [Project Euler](https://projecteuler.net/about) offers mathematical and computer programming challenges that encourages participants to develop new skills and find enjoyments in the world of mathematics. This project has been a challenging and fun way to demonstrate and practice existing software development skills and learn some new things!
 
-**Programing Concepts**
-- Strengthened Node.js/JavaScript Competencies
-- Test Driven Developement
-- Automated Unit Testing (Vitest)
-- Code documentation (JSDoc)
+## Technologies
+
+| Name          | Description |
+| ------------- | ----------- |
+| Runtime       | Node.js     |
+| Language      | JavaScript  |
+| Unit Testing  | vitest      |
+| Comments      | JSDoc       |
+| Documentation | Markdown    |
+| IDE           | VS Code     |
+| Platform      | MacOS       |
+| Repository    | GitHub.com  |
 
 ## Progress
 
@@ -26,18 +33,7 @@ This code repository contains functions that produce correct solutions for the f
 | :heavy_check_mark: 16 | :heavy_check_mark: 17 | :heavy_check_mark: 18 | :heavy_check_mark: 19 | :heavy_check_mark: 20 |
 | :heavy_check_mark: 21 | :heavy_check_mark: 22 | :heavy_check_mark: 23 | :heavy_check_mark: 24 | :heavy_check_mark: 25 |                    
 
-## Technologies
 
-| Name          | Description |
-| ------------- | ----------- |
-| Runtime       | Node.js     |
-| Language      | JavaScript  |
-| Unit Testing  | vitest      |
-| Comments      | JSDoc       |
-| Documentation | Markdown    |
-| IDE           | VS Code     |
-| Platform      | MacOS       |
-| Repository    | GitHub.com  |
 
 ## Limitations
 
