@@ -4,7 +4,7 @@
 
 ## Introduction
 
-[Project Euler](https://projecteuler.net/about) offers mathematical and computer programming challenges that encourages participants to develop new skills and find enjoyments in the world of mathematics. This project has been a challenging and fun way to demonstrate and practice existing software development skills and learn some new things!
+[Project Euler](https://projecteuler.net/about) offers mathematical and computer programming challenges that encourages participants to develop new skills and find enjoyment in the world of mathematics. This project has been a challenging and fun way to demonstrate and practice existing software development skills and learn some new things!
 
 ## Technologies
 
