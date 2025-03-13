@@ -23,7 +23,8 @@
 
 This code repository contains functions that produce correct solutions for the following checked problems. The goal is to learn new things and have more fun by adding new solutions over time!
 
-***UPDATE:*** Given the mathmatical limitations inherent in JavaScript (see Limitations section below), this project will end at problem 25. I will attempt to solve the next set of problems using Python in a Jupyter Notebook environment.
+***UPDATE:*** Given the mathmatical limitations inherent in JavaScript (see Limitations section below), this project will end at problem 25. Problems 26-50 were solved using Python in a Jupyter Notebook environment which can be seen in this GitHub repo [https://github.com/thomaspurk/project-euler-challenges-py](https://github.com/thomaspurk/project-euler-challenges-py)
+
 
 |                       |                       |                       |                       |                       | 
 | --------------------: | --------------------: | --------------------: | --------------------: | --------------------: | 
